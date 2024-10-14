@@ -19,6 +19,8 @@ import com.hebertfreitas.cursomc.domain.Categoria;
 import com.hebertfreitas.cursomc.dto.CategoriaDTO;
 import com.hebertfreitas.cursomc.services.CategoriaService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping(value = "/categorias")
 public class CategoriaResources {
@@ -36,10 +38,11 @@ public class CategoriaResources {
 		
 	}
 	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<Void> insert(@RequestBody Categoria obj) {
+	public ResponseEntity<Void> insert(@Valid @RequestBody CategoriaDTO objDTO) {
+		Categoria obj = service.fromDTO(objDTO);
 		obj = service.insert(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
-		.path("/{id}").buildAndExpand(obj.getId()).toUri();
+		.path("/{id}").buildAndExpand(objDTO.getId()).toUri();
 		return ResponseEntity.created(uri).build();
 			}
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT)
