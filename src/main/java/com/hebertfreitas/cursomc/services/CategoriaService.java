@@ -29,7 +29,8 @@ public class CategoriaService {
 		return repo.save(obj);
 	}
 	 public Categoria update(Categoria obj) {
-		 buscar(obj.getId());
+		 Categoria newObj = buscar(obj.getId());
+		 updateData(newObj, obj);
 		 return repo.save(obj);
 	 }
 	 public void delete(Integer id) {
@@ -51,5 +52,9 @@ public class CategoriaService {
 	 
 	 public Categoria fromDTO(CategoriaDTO objDTO) {
 		 return new Categoria(objDTO.getId(), objDTO.getNome());
+	 }
+	 
+	 public void updateData(Categoria newObj, Categoria obj) {
+		 newObj.setNome(obj.getNome());
 	 }
 }
