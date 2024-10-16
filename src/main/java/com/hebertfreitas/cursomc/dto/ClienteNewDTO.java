@@ -2,27 +2,50 @@ package com.hebertfreitas.cursomc.dto;
 
 import java.io.Serializable;
 
+import org.hibernate.validator.constraints.Length;
+
+import com.hebertfreitas.cursomc.services.validation.ClienteInsert;
+
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+
+@ClienteInsert
 public class ClienteNewDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
-
-		private String nome;
-		private String email;
-		private String cpfOuCnpj;
-		private Integer tipo;
 		
-		private String logadouro;
-		private String numero;
-		private String complemento;
-		private String bairro;
-		private String cep;
+	@NotEmpty(message = "Preenchimanto Obrigatório")
+	@Length(min = 5, max = 80, message = "O nome deve conter entre 5 e 80 caracteres.")
+	private String nome;
+	
+	@NotEmpty(message = "Preenchimento Obrigatório")
+	@Email(message = "Email invalido")
+	private String email;
+	
+	@NotEmpty(message = "Preenchimanto Obrigatório")
+	private String cpfOuCnpj;
+	private Integer tipo;
+	
+	@NotEmpty(message = "Preenchimanto Obrigatório")
+	private String logadouro;
+	
+	@NotEmpty(message = "Preenchimanto Obrigatório")
+	private String numero;
+	
+	private String complemento;
+	
+	private String bairro;
+	
+	@NotEmpty(message = "Preenchimanto Obrigatório")
+	private String cep;
+	
+	@NotEmpty(message = "Preenchimanto Obrigatório")
+	private String telefone1;
+	private String telefone2;
+	private String telefone3;
 		
-		private String telefone1;
-		private String telefone2;
-		private String telefone3;
+	private Integer cidadeId;
 		
-		private Integer cidadeId;
-		
-		public ClienteNewDTO() {
+	public ClienteNewDTO() {
 			
 		}
 
