@@ -43,4 +43,4 @@ public class BR {
         return check(tfn, 12, WEIGHT_TFN);
     }
 }
-}
+
