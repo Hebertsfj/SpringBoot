@@ -3,8 +3,8 @@ package com.hebertfreitas.cursomc.domain;
 import java.io.Serializable;
 import java.util.Objects;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.hebertfreitas.cursomc.domain.enums.EstadoPagamento;
 
 import jakarta.persistence.Entity;
@@ -17,6 +17,7 @@ import jakarta.persistence.OneToOne;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
+@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "@type")
 public abstract class Pagamento implements Serializable{
 	private static final long serialVersionUID = 1L;
 	

@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hebertfreitas.cursomc.domain.Produto;
-import com.hebertfreitas.cursomc.dto.CategoriaDTO;
 import com.hebertfreitas.cursomc.dto.ProdutoDTO;
 import com.hebertfreitas.cursomc.resurces.utils.URL;
 import com.hebertfreitas.cursomc.services.ProdutoService;
@@ -44,4 +43,6 @@ public class ProdutoResources {
 		Page<ProdutoDTO> listDTO = list.map(obj -> new ProdutoDTO(obj));
 		return ResponseEntity.ok().body(listDTO);
 	}
+	
+	
 }

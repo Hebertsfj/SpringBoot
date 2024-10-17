@@ -10,9 +10,12 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.hebertfreitas.cursomc.domain.Categoria;
+import com.hebertfreitas.cursomc.domain.Pedido;
 import com.hebertfreitas.cursomc.domain.Produto;
 import com.hebertfreitas.cursomc.repositories.CategoriaRepository;
 import com.hebertfreitas.cursomc.repositories.ProdutoRepository;
+
+import jakarta.validation.Valid;
 
 @Service
 public class ProdutoService {
@@ -32,5 +35,10 @@ public class ProdutoService {
 		 List<Categoria> categorias = categoriaRepository.findAllById(ids);
 		 return repo.search(nome, categorias, pageRequest);
 
+	}
+
+	public @Valid Pedido insert(@Valid Pedido obj) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
